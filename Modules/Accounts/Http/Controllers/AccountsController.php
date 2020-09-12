@@ -2,78 +2,26 @@
 
 namespace Modules\Accounts\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Accounts\AccountService\AccountService;
 
 class AccountsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function index()
+    private $account;
+
+    public function __construct(AccountService $account)
     {
-        return view('accounts::index');
+        $this->account = $account;
+    }
+    public function class(){
+        // return $this->account->test();
+        return User::getUserByKey('id', 1);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('accounts::create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('accounts::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('accounts::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+    public function class2(){
+        return $this->account->test();
     }
 }
